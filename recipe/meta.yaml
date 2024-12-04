@@ -10,16 +10,13 @@ source:
   sha256: eef8ce733f7a1b63f4e514ed89ae7a5543ee08c0f48392ef6d7a71f2357204eb
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
-    - {{ compiler('c') }}  # [unix]
-    - {{ stdlib("c") }}    # [unix]
-    - {{ compiler('fortran') }}  # [unix]
-    - {{ compiler('m2w64_c') }}  # [win]
-    - {{ stdlib("m2w64_c") }}    # [win]
-    - {{ compiler('m2w64_fortran') }}  # [win]
+    - {{ stdlib("c") }}
+    - {{ compiler("c") }}
+    - {{ compiler("fortran") }}
     - cmake
     - ninja
     - python
