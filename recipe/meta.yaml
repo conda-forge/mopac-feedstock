@@ -8,18 +8,17 @@ package:
 source:
   url: https://github.com/openmopac/mopac/archive/refs/tags/v{{ version }}.tar.gz
   sha256: b4c3959c36706ae06601819c5e057a261f2265d196986dd0c38ab63990dd17cd
+  patches:
+    - debug.patch  # [win]
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
-    - {{ compiler('c') }}  # [unix]
-    - {{ stdlib("c") }}    # [unix]
-    - {{ compiler('fortran') }}  # [unix]
-    - {{ compiler('m2w64_c') }}  # [win]
-    - {{ stdlib("m2w64_c") }}    # [win]
-    - {{ compiler('m2w64_fortran') }}  # [win]
+    - {{ stdlib("c") }}
+    - {{ compiler("c") }}
+    - {{ compiler("fortran") }}
     - cmake
     - ninja
     - python
@@ -32,9 +31,10 @@ requirements:
 test:
   commands:
     - test -f $PREFIX/lib/lib{{ name }}$SHLIB_EXT  # [unix]
-    - if not exist %LIBRARY_BIN%\\libmopac.dll exit 1  # [win]
+    - if not exist %LIBRARY_BIN%\\mopac.dll exit 1  # [win]
     - test -f $PREFIX/bin/{{ name }}-makpol  # [unix]
     - test -f $PREFIX/bin/{{ name }}-param  # [unix]
+    - exit 1 # [win]
     - {{ name }} --version
 
 about:
