@@ -24,9 +24,11 @@ requirements:
     - ninja
     - libgomp  # [linux]
     - llvm-openmp  # [osx]
+    - mdi
   host:
     - libblas
     - liblapack
+    - mdi
 
 test:
   commands:
