@@ -23,7 +23,7 @@ requirements:
     - ninja
     - libgomp  # [linux]
     - llvm-openmp  # [osx]
-    - msmpi  # [win]
+    - mdi
   host:
     - libblas
     - liblapack
